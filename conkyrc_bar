@@ -1,0 +1,52 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+update_interval 1.0
+total_run_times 0
+
+#colour
+default_color 333333
+default_shade_color ffffff
+own_window_colour 333333
+#font
+use_xft yes
+#xftfont lime:size=7
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+#mpd
+#mpd_host localhost
+#mpd_port 6600
+
+template0 888888
+template1 808080
+
+# Shortens units to a single character (kiB → k, GiB→G, etc)
+short_units yes
+
+# JSON for i3bar
+# Stuff after 'TEXT' will be formatted on screen
+# font ttf-awesome is needed for fancy icons
+
+#${color #00ff00}TODO: 
+#${color #939393}${exec cat Arbeitsfläche/TODO_20140109.save}
+#${if_existing /home/tan/.quodlibet/current}${color #939393} Music: ${color #ffffff}${exec quodlibet --print-playing "<artist>"} - ${exec quodlibet --#print-playing "<title~album>"}${endif}
+#${color #939393} Playing: ${color ffffff}${execi 2 ~/Scripts/cmus.sh}
+#${mpd_bar 5,20}
+TEXT
+[\
+{"full_text" : "${if_match "Playing" == "$mpd_status"}$mpd_artist - $mpd_title${endif}", "color" :"\#${template0}", "separator" : false, "separator_block_width" : 6},\
+{"full_text" : " ${uptime_short}", "color" : "\#e3c51f", "separator" : false, "separator_block_width" : 6},\
+{"full_text" : " $mem", "color" : "\#f98945", "separator" : false, "separator_block_width" : 6},
+{"full_text" : " ${fs_free /home}/${fs_size /home}", "color" : "\#f98945", "separator" : false, "separator_block_width" : 6},
+{"full_text" : " ${fs_free /}/${fs_size /}", "color" : "\#f98945", "separator" : false, "separator_block_width" : 6},
+{"full_text" : " ${battery_percent BAT1}%", "color" : "\#ff0b50", "separator" : false, "separator_block_width" : 6},
+{"full_text" : "${exec pactl list sinks | grep -m 1 'Volume: f' | cut -d '/' -f2}", "color": "\#f74ce5", "separator" : false, "separator_block_width" : 6},
+{"full_text" : "${if_existing /sys/class/net/enp2s0/operstate up}Eth Up:${upspeedf enp2s0}kb/s Down:${downspeedf enp2s0}kb/s${endif}", "color" : "\#4591f9", "separator" : false, "separator_block_width" : 6}, 
+{"full_text" : "${if_existing /sys/class/net/wlp3s0/operstate up} ↑ ${upspeedf wlp3s0}↓ ${downspeedf wlp3s0} ${endif}", "color" : "\#4591f9", "separator" : false, "separator_block_width" : 6},
+{"full_text" : "${time %a %d %b} ${time %H:%M}", "color" : "\#25d42d"}
+],
+#${if_existing /home/tan/.quodlibet/current} ${color #939393}Playing: ${color ffffff} ${exec cat ~/.quodlibet/current | grep -w artist |grep -v "/artist/" | cut -d "=" -f2} - ${exec cat ~/.quodlibet/current | grep -w title |grep -v " title "| cut -d "=" -f2}${endif} 
