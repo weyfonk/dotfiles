@@ -6,3 +6,5 @@ set softtabstop=0 " combination of tabs and spaces in case width other than hard
 set expandtab " always use spaces instead of tabs 
 set shiftwidth=4 " size of an 'indent' 
 set smarttab " makes 'tab' insert indents instead of tabs at the beginning of a line
+"Unset the "last search pattern" register (and thus clears search highlighting) by hitting return
+nnoremap <CR> :noh<CR><CR>
