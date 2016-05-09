@@ -46,7 +46,7 @@ TEXT
 {"full_text" : " ${battery_percent BAT1}%", "color" : "\#ff0b50", "separator" : false, "separator_block_width" : 6},
 {"full_text" : "${exec pactl list sinks | grep -m 1 'Volume: f' | cut -d '/' -f2}", "color": "\#f74ce5", "separator" : false, "separator_block_width" : 6},
 {"full_text" : "${if_existing /sys/class/net/enp2s0/operstate up}Eth Up:${upspeedf enp2s0}kb/s Down:${downspeedf enp2s0}kb/s${endif}", "color" : "\#4591f9", "separator" : false, "separator_block_width" : 6}, 
-{"full_text" : "${if_existing /sys/class/net/wlp3s0/operstate up} ↑ ${upspeedf wlp3s0}↓ ${downspeedf wlp3s0} ${endif}", "color" : "\#4591f9", "separator" : false, "separator_block_width" : 6},
+{"full_text" : "${if_existing /sys/class/net/wlp3s0b1/operstate up} ↑ ${upspeedf wlp3s0b1}↓ ${downspeedf wlp3s0b1} ${endif}", "color" : "\#4591f9", "separator" : false, "separator_block_width" : 6},
 {"full_text" : "${time %a %d %b} ${time %H:%M}", "color" : "\#25d42d"}
 ],
 #${if_existing /home/tan/.quodlibet/current} ${color #939393}Playing: ${color ffffff} ${exec cat ~/.quodlibet/current | grep -w artist |grep -v "/artist/" | cut -d "=" -f2} - ${exec cat ~/.quodlibet/current | grep -w title |grep -v " title "| cut -d "=" -f2}${endif} 
