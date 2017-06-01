@@ -41,3 +41,4 @@ nnoremap <F8> :tabn<Enter>
 nnoremap [<Space> o<Esc> " Insert empty line below cursor line (almost) without entering insert mode (dirty hack)
 nnoremap ]<Space> O<Esc>
 nnoremap <CR> :noh<CR><CR> " Unset the "last search pattern" register (and thus clears search highlighting) by hitting return
+nnoremap <F2> :echo expand('%:p')<Enter> " Show current file's full path
