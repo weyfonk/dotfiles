@@ -1,6 +1,3 @@
-execute pathogen#infect()
-" plugins: lightline, vim-colors-solarized
-
 " enable filetype detection
 filetype on
 filetype plugin on
